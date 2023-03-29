@@ -1,13 +1,43 @@
-body {
+/*learning preproc less*/
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  height: 100%;
+}
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1 1 auto;
+}
+header,
+footer {
+  height: 100px;
+  background-color: green;
+}
+header.header-container {
+  border: 10px solid blue;
+}
+header navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header navbar navlink {
+  border: 1px solid #ffff00;
+}
+header navbar navlink a {
+  margin-right: 10px;
+  font-size: 20px;
+}
+navlink a:hover {
+  color: #ffff00;
+}
+navlink a:hover ~ a {
+  color: aqua;
 }
