@@ -1,6 +1,24 @@
 /*learning preproc less*/
 // 4000$
 @yellow-color: #ffff00;
+@initial-size: 16px;
+@footer: footer;
+.mobile(@code){
+    @media screen and (max-width: 576px){
+        @code()
+    }
+}
+.mixin(){
+    display: flex;
+    justify-content: end;
+    font-size: 25px;
+    color:#8c8c8c;
+    border: 1px solid @yellow-color;
+}
+.fs(@size:30px,@color:fff00){
+    font-size: @size;
+    color: @color;
+}
 *{
     margin: 0;
     padding: 0;
@@ -9,6 +27,12 @@
 }
 body{
     height: 100%;
+    .mobile({
+        background-color: #ff0000;
+        header, footer{
+            background-color: #ffff00;
+        }
+    })
 }
 #root{
     min-height: 100vh;
@@ -36,18 +60,28 @@ header{
             border: 1px solid @yellow-color;
             a{
                 margin-right: 10px;
-                font-size: 20px;
+                font-size: 15px + 10px;
             }
         }
     }
 }
 navlink{
-    a{
+    a{  
         &:hover{
             color: @yellow-color;
+            font-size: @initial-size;
             ~ a{
                 color: aqua;
             }
         }
+    }
+}
+@{footer}{
+    border: 10px solid @yellow-color
+}
+.main-content{
+    .mixin;
+    + div{
+        .fs(15px,#ff0000)
     }
 }

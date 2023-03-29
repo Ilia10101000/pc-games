@@ -16,7 +16,8 @@ function App() {
       </header>
       <main>
         <section>
-          <div></div>
+          <div className='main-content'>4000$</div>
+          <div>8000$</div>
         </section>
       </main>
       <footer></footer>

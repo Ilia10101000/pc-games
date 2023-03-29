@@ -7,6 +7,15 @@
 body {
   height: 100%;
 }
+@media screen and (max-width: 576px) {
+  body {
+    background-color: #ff0000;
+  }
+  body header,
+  body footer {
+    background-color: #ffff00;
+  }
+}
 #root {
   min-height: 100vh;
   display: flex;
@@ -33,11 +42,26 @@ header navbar navlink {
 }
 header navbar navlink a {
   margin-right: 10px;
-  font-size: 20px;
+  font-size: 25px;
 }
 navlink a:hover {
   color: #ffff00;
+  font-size: 16px;
 }
 navlink a:hover ~ a {
   color: aqua;
+}
+footer {
+  border: 10px solid #ffff00;
+}
+.main-content {
+  display: flex;
+  justify-content: end;
+  font-size: 25px;
+  color: #8c8c8c;
+  border: 1px solid #ffff00;
+}
+.main-content + div {
+  font-size: 15px;
+  color: #ff0000;
 }
