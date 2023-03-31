@@ -1,14 +1,50 @@
-@import url('func.less');
+@import url(func.less);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-
-header{
-    background-color: red;
-    .mobile({
-        background-color: green;
-        .radius(10px)
-    })
+body{
+    height: 100vh;
+    background-color: @body_color;
+}
+.sidebar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: @sidebar_color;
+    .text{
+        font-size: 16px; // -------------------
+        font-weight: 500;
+        color:@text-color;
+    }
+    .image-text{
+        display: flex;
+        align-items: center;
+        .header-text{
+            display: flex;
+            flex-direction: column;
+            .profession{
+                margin-top: -2px;
+            }
+            .name{
+                font-weight: 600;
+            }
+        }
+        .image{
+            width: 40px;
+            border-radius: 6px;
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            img{
+                width:100%;
+            }
+        }
+    }
 }
