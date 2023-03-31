@@ -1,6 +1,8 @@
 import React from 'react';
 import Category from './Category';
 import Product from './Product';
+import Sidebar from './Sidebar';
+
 
 function App() {
 
