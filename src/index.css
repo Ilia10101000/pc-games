@@ -1,43 +1,20 @@
-/*learning preproc less*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  height: 100%;
-}
-#root {
-  min-height: 100vh;
+.category-container,
+.product-container {
   display: flex;
   flex-direction: column;
-}
-main {
-  flex: 1 1 auto;
-}
-header,
-footer {
-  height: 100px;
-  background-color: green;
-}
-header.header-container {
-  border: 10px solid blue;
-}
-header navbar {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 20px;
 }
-header navbar navlink {
-  border: 1px solid #ffff00;
+.category-container .img-wrapper,
+.product-container .img-wrapper {
+  width: 200px;
 }
-header navbar navlink a {
-  margin-right: 10px;
-  font-size: 20px;
-}
-navlink a:hover {
-  color: #ffff00;
-}
-navlink a:hover ~ a {
-  color: aqua;
+.category-container .img-wrapper img,
+.product-container .img-wrapper img {
+  width: 100%;
 }
