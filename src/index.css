@@ -71,15 +71,23 @@ body {
 .sidebar .image-text {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 .sidebar .image-text .image {
   min-width: 60px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: #695cfe;
+  box-sizing: content-box;
+  border-top: 8px solid #695cfe;
+  border-bottom: 8px solid #695cfe;
+  border-radius: 7px;
 }
 .sidebar .image-text .image img {
   width: 40px;
   border-radius: 6px;
+  filter: invert(100%);
 }
 .sidebar .image-text .header-text {
   display: flex;
@@ -103,6 +111,12 @@ body {
   outline: none;
   border: none;
   border-radius: 6px;
+}
+.sidebar .menu-bar {
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .sidebar .text {
   font-size: 16px;
@@ -142,4 +156,36 @@ body {
 .sidebar li .text {
   color: #707070;
   transition: all 0.3s ease;
+}
+.sidebar .bottom-menu .mode {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f6f5ff;
+  border-radius: 6px;
+}
+.sidebar .bottom-menu .mode .toogle-wrapper {
+  min-width: 60px;
+}
+.sidebar .bottom-menu .toogle {
+  background-color: #ddd;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sidebar .bottom-menu .toogle::before {
+  content: '';
+  position: relative;
+  display: inline-block;
+  top: 0px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #f6f5ff;
+}
+.root.dark .toogle::before {
+  left: 20px;
 }

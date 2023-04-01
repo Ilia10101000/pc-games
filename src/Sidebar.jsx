@@ -3,11 +3,17 @@ import logo from './img/logo.png'
 import {MdOutlineKeyboardArrowRight, MdProductionQuantityLimits} from 'react-icons/md'
 import {FiHome} from 'react-icons/fi'
 import {GoSearch} from 'react-icons/go'
-import {BiCategoryAlt} from 'react-icons/bi'
+import {BiCategoryAlt, BiLogOut} from 'react-icons/bi'
 import {FaUsers} from 'react-icons/fa'
+import {TbSunHigh} from 'react-icons/tb'
+import {BsMoonFill} from 'react-icons/bs'
+import { useDispatch, useSelector } from "react-redux";
+import { toogleMode } from "./store/modeReducer";
 
 export default function Sidebar(){
-
+    const {mode} = useSelector(state => state);
+    const dispatch = useDispatch()
+    console.log(mode)
     return(
         <nav className="sidebar">
             <header>
@@ -55,7 +61,24 @@ export default function Sidebar(){
                         </li>
                     </ul>
                 </div>
+                <div className="bottom-menu">
+                    <li className="nav-link">
+                        <a href="#">
+                            <span className="icon"><BiLogOut/></span>
+                            <span className="text nav-text">Logout</span>
+                        </a>
+                    </li>
+                    <li className="mode">
+                            <div className="moon-sun">
+                                <span className="icon">{mode.mode === 'light'?<BsMoonFill/>:<TbSunHigh/>}</span>
+                            </div>
+                            <div className="toogle-wrapper">
+                                <span className="toogle" onClick={() => dispatch(toogleMode())}></span>
+                            </div>
+                    </li>
+                </div>
             </div>
         </nav>
     )
 }
+// обьсни мне на простом примере что такое замыкание в javascript

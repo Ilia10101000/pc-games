@@ -38,15 +38,21 @@ body{
     .image-text{
         display: flex;
         align-items: center;
+        gap:5px;
         .image{
             min-width: 60px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            background-color: @primary_color;
+            box-sizing: content-box;
+            border-top: 8px solid @primary_color;
+            border-bottom: 8px solid @primary_color;
+            border-radius: 7px;
             img{
                 width: 40px;
                 border-radius: 6px;
-                // background-color: #8c8c8c;
-                // border: 5px solid #8c8c8c
+                filter: invert(100%);
             }
         }
         .header-text{
@@ -73,6 +79,13 @@ body{
             border-radius: 6px;
         }
     }
+    .menu-bar{
+        height: calc(100% - 50px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
     .text{
         font-size: 16px;
         font-weight: 500;
@@ -83,8 +96,6 @@ body{
         list-style: none;
         display: flex;
         align-items: center;
-        // background-color: red;
-        // gap: 10px;
         a{
             text-decoration: none;
             display: flex;
@@ -99,8 +110,6 @@ body{
                     color:@sidebar_color;
                 }
             }
-            // border: 1px solid red;
-            // gap: 10px;
         }
         .icon{
             font-size: 20px;
@@ -114,5 +123,46 @@ body{
             .trans(.3s);
         }
     }
+    .bottom-menu{
+        .mode{
+            display: flex;
+            justify-content: space-between;
+            background-color: @primary_color_light;
+            border-radius: 6px;
+            .toogle-wrapper{
+                min-width:60px;
+            }
+        }
+        .toogle{
+            background-color: @toogle_color;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            .trans(.3s);
+            &::before{  
+                content: '';
+                position:relative;
+                display: inline-block;
+                top:0px;
+                left: 5px;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: @primary_color_light;
 
+            }
+        }
+    }
+
+}
+.root{
+    &.dark{
+        .toogle{
+            &::before{
+                left:20px;
+            }
+        }
+    }
 }
