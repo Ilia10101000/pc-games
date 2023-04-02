@@ -8,14 +8,15 @@ import {FaUsers} from 'react-icons/fa'
 import {TbSunHigh} from 'react-icons/tb'
 import {BsMoonFill} from 'react-icons/bs'
 import { useDispatch, useSelector } from "react-redux";
-import { toogleMode } from "./store/modeReducer";
+import { switchMode, toogleClose } from "./store/sidebarReducer";
 
 export default function Sidebar(){
-    const {mode} = useSelector(state => state);
+
     const dispatch = useDispatch()
-    console.log(mode)
+    const {mode} = useSelector(state => state)
+
     return(
-        <nav className="sidebar">
+        <nav className={mode.isClose?'sidebar close':'sidebar'}>
             <header>
                 <div className="image-text">
                     <span className="image">
@@ -26,7 +27,7 @@ export default function Sidebar(){
                         <span className="profession">React Redux Less</span>
                     </div>
                 </div>
-                <span className="toogle"><MdOutlineKeyboardArrowRight/></span>
+                <span className="toogle" onClick={() => dispatch(toogleClose())}><MdOutlineKeyboardArrowRight/></span>
             </header>
             <div className="menu-bar">
                 <div className="menu">
@@ -70,10 +71,10 @@ export default function Sidebar(){
                     </li>
                     <li className="mode">
                             <div className="moon-sun">
-                                <span className="icon">{mode.mode === 'light'?<BsMoonFill/>:<TbSunHigh/>}</span>
+                                <span className={mode.isClose?'hidden':'icon'}>{mode.isDark?<TbSunHigh/>:<BsMoonFill/>}</span>
                             </div>
-                            <div className="toogle-wrapper">
-                                <span className="toogle" onClick={() => dispatch(toogleMode())}></span>
+                            <div className="switch-wrapper">
+                                <span className="switch" onClick={()=>dispatch(switchMode())}></span>
                             </div>
                     </li>
                 </div>
@@ -81,4 +82,3 @@ export default function Sidebar(){
         </nav>
     )
 }
-// обьсни мне на простом примере что такое замыкание в javascript

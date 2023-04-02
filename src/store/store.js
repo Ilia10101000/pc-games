@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { modeReducer } from "./modeReducer";
-import { countReducer } from "./countReducer";
+import { modeReducer } from "./sidebarReducer";
 
 export default configureStore({
     reducer:{
-        mode: modeReducer,
-        count: countReducer
+        mode: modeReducer
     }
 })
