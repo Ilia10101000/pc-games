@@ -1,8 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Category from './Category';
-import Product from './Product';
-import Sidebar from './Sidebar';
+import Layout from './Components/Layout';
+import Home from './Components/Home';
+import Login from './Components/Login';
+import Categories from './Components/Categories';
+import Users from './Components/Users';
+import Products from './Components/Products'
+import PageHasNotFound from './Components/PageHasNotFound'
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -31,10 +35,11 @@ function App() {
   return (
 <Routes>
   <Route path='/' element={<Layout/>}>
-    <Route index element={<HomePage/>}></Route>
-    <Route path='products' element={<ProductsPage/>}></Route>
-    <Route path='categories' element={<CategoriesPage/>}></Route>
-    <Route path='users' element={<UsersPage/>}></Route>
+    <Route index element={<Home/>}></Route>
+    <Route path='products' element={<Products/>}></Route>
+    <Route path='login' element={<Login/>}></Route>
+    <Route path='categories' element={<Categories/>}></Route>
+    <Route path='users' element={<Users/>}></Route>
     <Route path='*' element={<PageHasNotFound/>}></Route>
   </Route>
 </Routes>

@@ -11,24 +11,26 @@
 body{
     --body_color: #e4e9f7;
     --sidebar_color:#fff;
-    --primary_color:#695cfe;
+    --primary_color:#0cc7e9;
     --primary_color_light:#f6f5ff;
     --toogle_color:#ddd;
-    --text-color:#707070;
+    --text-color:#111111;
+    --header_footer_color:#e3e3e0;
     .trans(.4s);
 }
 body{
     &.dark{
         --body_color: #18191a;
         --sidebar_color:#242526;
-        // --primary_color:#3a3b3c;
+        --primary_color:#e10e2e;
         --primary_color_light:#3a3b3c;
         --toogle_color:#ddd;
-        --text-color:#707070;
+        --text-color:#fff;
     }
 }
 body{
     background-color: var(--body_color);
+    height: 100%;
 }
 .hidden{
     display:none;
@@ -42,22 +44,32 @@ body{
     padding: 10px 14px;
     background-color: var(--sidebar_color);
     .trans(.4s);
+    + .layout-wrapper{
+        width: calc(100% - 250px);
+        margin-left: auto;
+        .trans(.3s)
+    }
     &.close{
         width: 88px;
+        + .layout-wrapper{
+            width:calc(100% - 88px);
+            margin-left: auto;
+            .trans(.3s)
+        }
         .switch-wrapper{
             .trans(.3s);
         }
         .text{
-            opacity: 0;
+            display: none !important;
             .trans(.3s)
         }
-        header{
+        .sidebar-header{
             .toogle{
                 right:-30px;
             }
         }
     }
-    header{
+    .sidebar-header{
         position: relative;
         .toogle{
             position: absolute;
@@ -132,7 +144,6 @@ body{
         font-size: 16px;
         font-weight: 500;
         white-space: nowrap;
-        opacity: 1;
     }
     li{
         height: 50px;
@@ -140,7 +151,7 @@ body{
         list-style: none;
         display: flex;
         align-items: center;
-        a{
+        .nav-link{
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -148,10 +159,13 @@ body{
             border-radius: 6px;
             width: 100%;
             .trans(.3s);
+            .icon, .text{
+                color:var(--text_color)
+            }
             &:hover{
                 background-color: var(--primary_color);
                 .icon, .text{
-                    color:var(--sidebar_color);
+                    color:var(--toogle_color);
                 }
             }
         }
@@ -207,6 +221,19 @@ body{
         }
     }
 
+}
+.layout-wrapper{
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    header, footer{
+        height: 100px;
+        background-color: var(--header_footer_color);
+    }
+    main{
+        flex: 1 1 auto;
+    }
 }
 body{
     &.dark{

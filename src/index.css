@@ -42,21 +42,24 @@
 body {
   --body_color: #e4e9f7;
   --sidebar_color: #fff;
-  --primary_color: #695cfe;
+  --primary_color: #0cc7e9;
   --primary_color_light: #f6f5ff;
   --toogle_color: #ddd;
-  --text-color: #707070;
+  --text-color: #111111;
+  --header_footer_color: #e3e3e0;
   transition: all 0.4s ease;
 }
 body.dark {
   --body_color: #18191a;
   --sidebar_color: #242526;
+  --primary_color: #e10e2e;
   --primary_color_light: #3a3b3c;
   --toogle_color: #ddd;
-  --text-color: #707070;
+  --text-color: #fff;
 }
 body {
   background-color: var(--body_color);
+  height: 100%;
 }
 .hidden {
   display: none;
@@ -71,23 +74,33 @@ body {
   background-color: var(--sidebar_color);
   transition: all 0.4s ease;
 }
+.sidebar + .layout-wrapper {
+  width: calc(100% - 250px);
+  margin-left: auto;
+  transition: all 0.3s ease;
+}
 .sidebar.close {
   width: 88px;
+}
+.sidebar.close + .layout-wrapper {
+  width: calc(100% - 88px);
+  margin-left: auto;
+  transition: all 0.3s ease;
 }
 .sidebar.close .switch-wrapper {
   transition: all 0.3s ease;
 }
 .sidebar.close .text {
-  opacity: 0;
+  display: none !important;
   transition: all 0.3s ease;
 }
-.sidebar.close header .toogle {
+.sidebar.close .sidebar-header .toogle {
   right: -30px;
 }
-.sidebar header {
+.sidebar .sidebar-header {
   position: relative;
 }
-.sidebar header .toogle {
+.sidebar .sidebar-header .toogle {
   position: absolute;
   top: 50%;
   right: -25px;
@@ -157,7 +170,6 @@ body {
   font-size: 16px;
   font-weight: 500;
   white-space: nowrap;
-  opacity: 1;
 }
 .sidebar li {
   height: 50px;
@@ -166,7 +178,7 @@ body {
   display: flex;
   align-items: center;
 }
-.sidebar li a {
+.sidebar li .nav-link {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -175,12 +187,16 @@ body {
   width: 100%;
   transition: all 0.3s ease;
 }
-.sidebar li a:hover {
+.sidebar li .nav-link .icon,
+.sidebar li .nav-link .text {
+  color: var(--text_color);
+}
+.sidebar li .nav-link:hover {
   background-color: var(--primary_color);
 }
-.sidebar li a:hover .icon,
-.sidebar li a:hover .text {
-  color: var(--sidebar_color);
+.sidebar li .nav-link:hover .icon,
+.sidebar li .nav-link:hover .text {
+  color: var(--toogle_color);
 }
 .sidebar li .icon {
   font-size: 20px;
@@ -229,6 +245,20 @@ body {
   border-radius: 50%;
   background-color: var(--primary_color_light);
   transition: all 0.3s ease;
+}
+.layout-wrapper {
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.layout-wrapper header,
+.layout-wrapper footer {
+  height: 100px;
+  background-color: var(--header_footer_color);
+}
+.layout-wrapper main {
+  flex: 1 1 auto;
 }
 body.dark li .icon,
 body.dark li .text {

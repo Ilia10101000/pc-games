@@ -1,5 +1,5 @@
 import React from "react";
-import logo from './img/logo.png'
+import logo from '../img/logo.png'
 import {MdOutlineKeyboardArrowRight, MdProductionQuantityLimits, MdOutlineKeyboardArrowLeft} from 'react-icons/md'
 import {FiHome} from 'react-icons/fi'
 import {GoSearch} from 'react-icons/go'
@@ -8,7 +8,8 @@ import {FaUsers} from 'react-icons/fa'
 import {TbSunHigh} from 'react-icons/tb'
 import {BsMoonFill} from 'react-icons/bs'
 import { useDispatch, useSelector } from "react-redux";
-import { switchMode, toogleClose } from "./store/sidebarReducer";
+import { switchMode, toogleClose } from "../store/sidebarReducer";
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar(){
 
@@ -25,7 +26,7 @@ export default function Sidebar(){
 
     return(
         <nav className={mode.isClose?'sidebar close':'sidebar'}>
-            <header>
+            <div className="sidebar-header">
                 <div className="image-text">
                     <span className="image">
                         <img src={logo} alt='logo'/>
@@ -36,7 +37,7 @@ export default function Sidebar(){
                     </div>
                 </div>
                 <span className="toogle" onClick={() => dispatch(toogleClose())}>{mode.isClose?<MdOutlineKeyboardArrowRight/>:<MdOutlineKeyboardArrowLeft/>}</span>
-            </header>
+            </div>
             <div className="menu-bar">
                 <div className="menu">
                     <li className="search-box" onClick={inputSelect}>
@@ -44,38 +45,38 @@ export default function Sidebar(){
                             <input ref={inputRef} type="search" placeholder="Search..." />
                     </li>
                     <ul className="menu-links">
-                        <li className="nav-link">
-                            <a href="#">
+                        <li>
+                            <NavLink className='nav-link' to='/'>
                                 <span className="icon"><FiHome/></span>
-                                <span className="text nav-text">Home</span>
-                            </a>
+                                <span className="text">Home</span>
+                            </NavLink>
                         </li>
-                        <li className="nav-link">
-                            <a href="#">
+                        <li>
+                            <NavLink className='nav-link' to='products'>
                                 <span className="icon"><MdProductionQuantityLimits/></span>
-                                <span className="text nav-text">Products</span>
-                            </a>
+                                <span className="text">Products</span>
+                            </NavLink>
                         </li>
-                        <li className="nav-link">
-                            <a href="#">
+                        <li>
+                            <NavLink className='nav-link' to='categories'>
                                 <span className="icon"><BiCategoryAlt/></span>
-                                <span className="text nav-text">Category</span>
-                            </a>
+                                <span className="text">Category</span>
+                            </NavLink>
                         </li>
-                        <li className="nav-link">
-                            <a href="#">
+                        <li>
+                            <NavLink className='nav-link' to='users'>
                                 <span className="icon"><FaUsers/></span>
-                                <span className="text nav-text">Users</span>
-                            </a>
+                                <span className="text">Users</span>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
                 <div className="bottom-menu">
-                    <li className="nav-link">
-                        <a href="#">
+                    <li>
+                        <div className="nav-link">
                             <span className="icon"><BiLogOut/></span>
-                            <span className="text nav-text">Logout</span>
-                        </a>
+                            <span className="text">Logout</span>
+                        </div>
                     </li>
                     <li className="mode">
                             <div className="moon-sun">
