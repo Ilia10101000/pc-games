@@ -1,15 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-const fetchCategoryList = createAsyncThunk('category/fetchCategoryList', async (_,{rejectWithValue}) => {
+
+export const fetchCategoryList = createAsyncThunk('category/fetchCategoryList', async (_,{rejectWithValue}) => {
     try{
         const response = await fetch('https://api.escuelajs.co/api/v1/categories');
-        if(response.ok){
-            const data = response.json();
-            return data
-        } else {
+ 
+        if(!response.ok){
             throw new Error('some error')
-        }
+        } 
+        const data = response.json();
+        return data
     } catch(e){
-        rejectWithValue(e.message)
+        return rejectWithValue(e.message)
     }
 })
 const categorySlice = createSlice({
@@ -20,7 +21,7 @@ const categorySlice = createSlice({
         error:null
     },
     reducers:{
-        fetchCategoryList(state, action){
+        fetchCategoryList:(state, action) => {
             state.category = action.payload.list
         }
     },
@@ -30,12 +31,14 @@ const categorySlice = createSlice({
             state.error = null;
         }).addCase(fetchCategoryList.fulfilled, (state, action) => {
             state.error = null;
-            state.status = 'completed';
+            state.status = 'success';
             state.category = action.payload
-        }).addCase(fetchCategoryList.rejected, state => {
+        }).addCase(fetchCategoryList.rejected, (state, action) => {
             state.status = 'rejected';
             state.error = action.payload;
         })
     }
     
-})
+});
+
+export const categoryReducer = categorySlice.reducer
