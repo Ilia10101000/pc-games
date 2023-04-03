@@ -1,6 +1,6 @@
 import React from "react";
 import logo from './img/logo.png'
-import {MdOutlineKeyboardArrowRight, MdProductionQuantityLimits} from 'react-icons/md'
+import {MdOutlineKeyboardArrowRight, MdProductionQuantityLimits, MdOutlineKeyboardArrowLeft} from 'react-icons/md'
 import {FiHome} from 'react-icons/fi'
 import {GoSearch} from 'react-icons/go'
 import {BiCategoryAlt, BiLogOut} from 'react-icons/bi'
@@ -15,6 +15,14 @@ export default function Sidebar(){
     const dispatch = useDispatch()
     const {mode} = useSelector(state => state)
 
+    const inputRef = React.useRef()
+    function inputSelect(){
+        if(mode.isClose){
+            dispatch(toogleClose());
+            inputRef.current.focus()
+        }
+    }
+
     return(
         <nav className={mode.isClose?'sidebar close':'sidebar'}>
             <header>
@@ -27,13 +35,13 @@ export default function Sidebar(){
                         <span className="profession">React Redux Less</span>
                     </div>
                 </div>
-                <span className="toogle" onClick={() => dispatch(toogleClose())}><MdOutlineKeyboardArrowRight/></span>
+                <span className="toogle" onClick={() => dispatch(toogleClose())}>{mode.isClose?<MdOutlineKeyboardArrowRight/>:<MdOutlineKeyboardArrowLeft/>}</span>
             </header>
             <div className="menu-bar">
                 <div className="menu">
-                    <li className="search-box">
+                    <li className="search-box" onClick={inputSelect}>
                             <span className="icon"><GoSearch/></span>
-                            <input type="search" placeholder="Search..." />
+                            <input ref={inputRef} type="search" placeholder="Search..." />
                     </li>
                     <ul className="menu-links">
                         <li className="nav-link">

@@ -81,9 +81,8 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
-.sidebar.close .header .toogle {
-  transform: rotate(120deg);
-  border: 1px solid red;
+.sidebar.close header .toogle {
+  right: -30px;
 }
 .sidebar header {
   position: relative;
@@ -101,6 +100,7 @@ body {
   justify-content: center;
   border-radius: 50%;
   color: var(--toogle_color);
+  cursor: pointer;
 }
 .sidebar .image-text {
   display: flex;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Category from './Category';
 import Product from './Product';
 import Sidebar from './Sidebar';
-import { toogleMode } from './store/sidebarReducer';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   // const [store, setStore] = React.useState([]);
@@ -23,19 +23,22 @@ function App() {
     //     .catch(e => console.log(e))
     // },[])
     const {mode, count} = useSelector(state => state);
-    console.log(mode.isDark)
     const dispatch = useDispatch()
     React.useEffect(()=>{
       document.querySelector('body').classList.toggle('dark')
     },[mode.isDark])
 
   return (
-    <div>
-      <Sidebar/>
-    </div>
+<Routes>
+  <Route path='/' element={<Layout/>}>
+    <Route index element={<HomePage/>}></Route>
+    <Route path='products' element={<ProductsPage/>}></Route>
+    <Route path='categories' element={<CategoriesPage/>}></Route>
+    <Route path='users' element={<UsersPage/>}></Route>
+    <Route path='*' element={<PageHasNotFound/>}></Route>
+  </Route>
+</Routes>
   );
 }
 
 export default App;
-
-//как сделать переключатель темы на сайте через less и react
