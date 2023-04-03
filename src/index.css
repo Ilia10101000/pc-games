@@ -51,7 +51,6 @@ body {
 body.dark {
   --body_color: #18191a;
   --sidebar_color: #242526;
-  --primary_color: #3a3b3c;
   --primary_color_light: #3a3b3c;
   --toogle_color: #ddd;
   --text-color: #707070;
@@ -82,6 +81,10 @@ body {
   opacity: 0;
   transition: all 0.3s ease;
 }
+.sidebar.close .header .toogle {
+  transform: rotate(120deg);
+  border: 1px solid red;
+}
 .sidebar header {
   position: relative;
 }
@@ -97,7 +100,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  color: var(--sidebar_color);
+  color: var(--toogle_color);
 }
 .sidebar .image-text {
   display: flex;
@@ -226,6 +229,10 @@ body {
   border-radius: 50%;
   background-color: var(--primary_color_light);
   transition: all 0.3s ease;
+}
+body.dark li .icon,
+body.dark li .text {
+  color: var(--toogle_color);
 }
 body.dark .bottom-menu .switch-wrapper .switch::before {
   left: 24px;

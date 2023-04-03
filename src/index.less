@@ -21,7 +21,7 @@ body{
     &.dark{
         --body_color: #18191a;
         --sidebar_color:#242526;
-        --primary_color:#3a3b3c;
+        // --primary_color:#3a3b3c;
         --primary_color_light:#3a3b3c;
         --toogle_color:#ddd;
         --text-color:#707070;
@@ -51,6 +51,12 @@ body{
             opacity: 0;
             .trans(.3s)
         }
+        .header{
+            .toogle{
+                transform: rotate(120deg);
+                border: 1px solid red;
+            }
+        }
     }
     header{
         position: relative;
@@ -66,7 +72,7 @@ body{
             align-items:center;
             justify-content: center;
             border-radius: 50%;
-            color: var(--sidebar_color);
+            color: var(--toogle_color);
 
         }
     }
@@ -204,6 +210,11 @@ body{
 }
 body{
     &.dark{
+        li{
+            .icon, .text{
+                color: var(--toogle_color);
+            }
+        }
         .bottom-menu{
             .switch-wrapper{
                 .switch{
