@@ -72,6 +72,46 @@ body.dark .bottom-menu .switch-wrapper .switch::before {
 .hidden {
   display: none;
 }
+.login-page {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--body_color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-page .login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.login-page .login-container .custom-input {
+  position: relative;
+  width: 300px;
+}
+.login-page .login-container .custom-input input {
+  background-color: var(--sidebar_color);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  width: 100%;
+  padding: 15px;
+}
+.login-page .login-container .custom-input input:focus ~ span,
+.login-page .login-container .custom-input input:not(:placeholder-shown) ~ span {
+  font-size: 12px;
+  top: -7px;
+}
+.login-page .login-container .custom-input span {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  font-size: 17px;
+}
 .sidebar {
   position: fixed;
   top: 0;
@@ -299,7 +339,7 @@ body.dark .bottom-menu .switch-wrapper .switch::before {
   transition: all 0.2s ease;
 }
 .products-container .product-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
 }
 .products-container .product-item .image-wrapper {
   width: 300px;

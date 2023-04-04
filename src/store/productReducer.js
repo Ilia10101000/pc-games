@@ -9,10 +9,11 @@ export const fetchProductsList = createAsyncThunk('product/fetchProductsList',as
         const response = data.json();
         // const arr = [];
         // data.forEach(element => {
-        //     if(!arr.includes(element.category.name)){
+        //     if(!arr.includes(element.category.name)){npm start
         //         arr.push(element.category.name)
         //     }
         // });
+        console.log(response)
         return response
     }catch(e){
         return rejectWithValue(e.message)
