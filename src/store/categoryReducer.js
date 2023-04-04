@@ -11,6 +11,7 @@ export const fetchCategoryList = createAsyncThunk('category/fetchCategoryList', 
         } 
         const data = await response.json();
         const modifiedCategories = [];
+        console.log(data)
         data.forEach( category => {
             if(availableCategories.includes(category.name) 
             && modifiedCategories.every(item => item.name !== category.name)){
