@@ -273,8 +273,6 @@ body.dark .bottom-menu .switch-wrapper .switch::before {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 20px;
-  justify-content: center;
-  align-content: center;
 }
 .categories-container .category-item {
   cursor: pointer;
@@ -287,5 +285,15 @@ body.dark .bottom-menu .switch-wrapper .switch::before {
   width: 400px;
 }
 .categories-container .category-item .image img {
+  width: 100%;
+}
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.products-container .product-item .image-wrapper {
+  width: 300px;
+}
+.products-container .product-item .image-wrapper img {
   width: 100%;
 }
