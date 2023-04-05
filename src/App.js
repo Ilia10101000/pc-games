@@ -7,15 +7,19 @@ import Categories from './Components/Categories';
 import Users from './Components/Users';
 import Products from './Components/Products'
 import PageHasNotFound from './Components/PageHasNotFound'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
 
-    const {mode, count} = useSelector(state => state);
+    const {mode, isLogin} = useSelector(state => state);
 
     React.useEffect(()=>{
       document.querySelector('body').classList.toggle('dark')
     },[mode.isDark])
+
+    // if(!isLogin.isLogin){
+    //   return <Navigate to='/login' replace={true}/>
+    // }
 
   return (
       <Routes>

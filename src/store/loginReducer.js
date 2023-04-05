@@ -5,7 +5,8 @@ const loginSlice = createSlice({
     initialState:{
         isLogin: false,
         login:null,
-        email:null
+        email:null,
+        status:null
     },
     reducers:{
         getLogin: (state,action) => {

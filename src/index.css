@@ -66,7 +66,8 @@ body.dark li .icon,
 body.dark li .text {
   color: var(--toogle_color);
 }
-body.dark .bottom-menu .switch-wrapper .switch::before {
+body.dark .bottom-menu .switch-wrapper .switch::before,
+body.dark .login-page .switch-wrapper .switch::before {
   left: 24px;
 }
 .hidden {
@@ -81,36 +82,98 @@ body.dark .bottom-menu .switch-wrapper .switch::before {
   bottom: 0;
   background-color: var(--body_color);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
 }
-.login-page .login-container {
+.login-page .login-welcome {
+  position: relative;
+  top: -50px;
+  font-size: 25px;
+}
+.login-page .login-mode {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+.login-page .switch-wrapper {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+}
+.login-page .switch-wrapper .switch {
+  background-color: var(--toogle_color);
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.login-page .switch-wrapper .switch::before {
+  content: '';
+  position: relative;
+  display: inline-block;
+  top: 1px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--primary_color_light);
+  transition: all 0.3s ease;
+}
+.login-page .login-form-container {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
-.login-page .login-container .custom-input {
+.login-page .login-form-container .custom-input {
   position: relative;
   width: 300px;
+  border-radius: 6px;
+  border: 1px solid var(--text-color);
 }
-.login-page .login-container .custom-input input {
-  background-color: var(--sidebar_color);
+.login-page .login-form-container .custom-input input {
+  background-color: transparent;
   border: none;
   outline: none;
-  border-radius: 6px;
   width: 100%;
   padding: 15px;
+  z-index: 1;
 }
-.login-page .login-container .custom-input input:focus ~ span,
-.login-page .login-container .custom-input input:not(:placeholder-shown) ~ span {
+.login-page .login-form-container .custom-input input:focus ~ span,
+.login-page .login-form-container .custom-input input:not(:placeholder-shown) ~ span {
   font-size: 12px;
-  top: -7px;
+  top: -8px;
+  box-sizing: content-box;
+  padding: 0px 5px;
+  z-index: 2;
+  background-color: var(--body_color);
 }
-.login-page .login-container .custom-input span {
+.login-page .login-form-container .custom-input span {
   position: absolute;
   top: 12px;
   left: 15px;
   font-size: 17px;
+  transition: all 0.2s ease;
+  z-index: -1;
+  color: #8c8c8c;
+}
+.login-page .login-form-container .login-button {
+  align-self: flex-start;
+  box-sizing: content-box;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  color: var(--primary_color);
+  cursor: pointer;
+  border: 1px solid var(--text-color);
 }
 .sidebar {
   position: fixed;
