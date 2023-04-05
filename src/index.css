@@ -138,6 +138,12 @@ body.dark .login-page .switch-wrapper .switch::before {
   border-radius: 6px;
   border: 1px solid var(--text-color);
 }
+.login-page .login-form-container .custom-input .error-message {
+  position: absolute;
+  font-size: 10px;
+  top: 55px;
+  color: #ff0000;
+}
 .login-page .login-form-container .custom-input input {
   background-color: transparent;
   border: none;
@@ -145,6 +151,7 @@ body.dark .login-page .switch-wrapper .switch::before {
   width: 100%;
   padding: 15px;
   z-index: 1;
+  color: var(--text-color);
 }
 .login-page .login-form-container .custom-input input:focus ~ span,
 .login-page .login-form-container .custom-input input:not(:placeholder-shown) ~ span {
