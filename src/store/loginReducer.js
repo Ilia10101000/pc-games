@@ -21,16 +21,17 @@ const loginSlice = createSlice({
             state.login = action.payload.login;
             state.email = action.payload.email;
             state.isLogin = true;
-            state.loginError = null;
-            state.emailError = null
         },
         getLogout: (state) => {
             state.email = null;
             state.login = null;
             state.isLogin = false;
+        },
+        changeStatus:(state,action) => {
+            state.status = action.payload
         }
     }
 });
 
-export const {getLogin, getLogout, setLoginError, setEmailError} = loginSlice.actions;
+export const {getLogin, getLogout, setLoginError, setEmailError, changeStatus} = loginSlice.actions;
 export const loginReducer = loginSlice.reducer;

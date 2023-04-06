@@ -16,6 +16,11 @@ function App() {
     React.useEffect(()=>{
       document.querySelector('body').classList.toggle('dark')
     },[mode.isDark])
+    React.useEffect(() => {
+      return  (
+        localStorage.removeItem('login')
+      )
+    },[])
 
     // if(!isLogin.isLogin){
     //   return <Navigate to='/login' replace={true}/>
