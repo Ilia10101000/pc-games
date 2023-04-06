@@ -12,7 +12,7 @@ const loginSlice = createSlice({
     },
     reducers:{
         setLoginError: (state, action) => {
-            state.loginError = action.payload;
+            state.loginError = action.payload
         },
         setEmailError: (state, action) => {
             state.emailError = action.payload;

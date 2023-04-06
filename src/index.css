@@ -127,6 +127,9 @@ body.dark .login-page .switch-wrapper .switch::before {
   background-color: var(--primary_color_light);
   transition: all 0.3s ease;
 }
+.login-page .error-input-value {
+  border: 1px solid red!important;
+}
 .login-page .login-form-container {
   display: flex;
   flex-direction: column;
@@ -153,8 +156,8 @@ body.dark .login-page .switch-wrapper .switch::before {
   z-index: 1;
   color: var(--text-color);
 }
-.login-page .login-form-container .custom-input input:focus ~ span,
-.login-page .login-form-container .custom-input input:not(:placeholder-shown) ~ span {
+.login-page .login-form-container .custom-input input:focus + span,
+.login-page .login-form-container .custom-input input:not(:placeholder-shown) + span:not(.error-message) {
   font-size: 12px;
   top: -8px;
   box-sizing: content-box;

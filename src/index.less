@@ -109,6 +109,9 @@ body{
             }
         }
     }
+    .error-input-value{
+        border: 1px solid red!important;
+    }
     .login-form-container{
         display: flex;
         flex-direction: column;
@@ -132,7 +135,7 @@ body{
                 padding: 15px;
                 z-index: 1;
                 color: var(--text-color);
-                &:focus ~ span, &:not(:placeholder-shown) ~ span{
+                &:focus + span, &:not(:placeholder-shown) + span:not(.error-message){
                     font-size: 12px;
                     top: -8px;
                     box-sizing: content-box;

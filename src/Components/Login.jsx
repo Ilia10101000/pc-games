@@ -10,30 +10,32 @@ const emailRegValidation = new RegExp(/^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z
 export default function Login(){
 
     const dispatch = useDispatch();
-    const {mode.isDark : isDark} = useSelector(state => state);
+    const {loginError, emailError} = useSelector( state => state.isLogin)
+    const {isDark} = useSelector( state => state.mode)
 
     const [loginInputValue, setLoginInputValue] = React.useState('');
     const [emailInputValue, setEmailInputValue] = React.useState('');
+    const ref= React.useRef()
 
     function loginValidation(value){
         if(value.trim()){
-            if(value.length < 8){
-                dispatch(setLoginError('Minimal login`s value length is 8 characters'))
-            } else {
-                return true
-            }
+           return value.length > 8
         }
     }
     function emailValidation(value){
         if(value.trim()){
-            if(!emailRegValidation.test(value)){
-                dispatch(setEmailError('Check validate your email value'))
-            } else {
-                return true
+            return emailRegValidation.test(value)      
+        }
+    }
+    function hundlerinputChange(value, validator, errorValue, errorMessage, errorDispatcher){
+        if(value.trim()){
+            if(!validator(value) && !errorValue){
+                dispatch(errorDispatcher(errorMessage))
+            } else if(validator(value) && errorValue){
+                dispatch(errorDispatcher(null))
             }
         }
     }
-
     return(
         <div className="login-page">
             <div className="login-mode">
@@ -47,8 +49,8 @@ export default function Login(){
             <div className="login-welcome">Welcome to my fake store</div>
             <div className="login-form-container">
                 <div className="pass-description">Please, pass register</div>
-                <div className="custom-input"><input value={loginInputValue} onChange={e => setLoginInputValue(e.target.value)} placeholder=" "/><span>Login</span><span className="error-message"></span></div>
-                <div className="custom-input"><input value={emailInputValue} onChange={e => setEmailInputValue(e.target.value)} placeholder=" "/><span>Email</span><span className="error-message"></span></div>
+                <div className={loginError?'custom-input error-input-value':'custom-input'}><input value={loginInputValue} onChange={e => setLoginInputValue(e.target.value)} onBlur={() => hundlerinputChange(loginInputValue, loginValidation, loginError, 'Login must contains no less 8 characters',setLoginError )} placeholder=" "/><span>Login</span><span ref={ref} className="error-message">{loginError}</span></div>
+                <div className={emailError?'custom-input error-input-value':'custom-input'}><input value={emailInputValue} onChange={e => setEmailInputValue(e.target.value)} onBlur={() => hundlerinputChange(emailInputValue, emailValidation, emailError, 'Check your email for mistake',setEmailError )} placeholder=" "/><span>Email</span><span className="error-message">{emailError}</span></div>
                 <button className="login-button">Login</button>
             </div>
         </div>
